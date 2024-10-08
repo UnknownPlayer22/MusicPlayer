@@ -18,7 +18,7 @@ float stopX, stopY, stopWidth, StopHeight;
 //
 void setup()
 {
-  size(900, 800)
+  size(900, 800);
   appWidth = width;
   appHeight = height;
   //Variables for any music button
@@ -28,12 +28,13 @@ void setup()
   musicButtonDIV_Y = musicButtonDIV_Height - musicButtonDIV_Height*1/2;
   //
   //Population (variables)
-  if ( musicButtonDIV_Width >= musicButtonDIV_Height ) {musicButtonSqareWidth = musicButtonDIV_Height ;
-    musicButtonSquareHeight = musicButtonDIV-Height ;
+  if ( musicButtonDIV_Width >= musicButtonDIV_Height ) {
+    musicButtonSquareWidth = musicButtonDIV_Height ;
+    musicButtonSquareHeight = musicButtonDIV_Height ;
     float padding1 = musicButtonDIV_Width - musicButtonDIV_Height;
-    float padding2 = padding*1/2;
-    musicButtonSqareX = musicButtonDIV_X + padding2 ;
-    musicButtonSqareY = MusicButtonDIV_Y;
+    float padding2 = padding1*1/2;
+    musicButtonSquareX = musicButtonDIV_X + padding2 ;
+    musicButtonSquareY = MusicButtonDIV_Y;
     println( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
     println ( musicButtonSqareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
     println ( padding1 );
@@ -90,7 +91,7 @@ void setup()
 void draw() {
   //background(200); // GrayScale; 0-255
   //
-  rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonHeight );
+  //rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonHeight );
   //
   //if ( day ) {} else if ( dark ) {} else {}
   //
@@ -107,10 +108,6 @@ void draw() {
 //
 void mousePressed() {
   //if() {} else {}
-} //End mousePressed
-//
-void keyPressed() {
-  //if ( key==? || key==? ) ;
 } //End mousePressed
 //
 void keyPressed() {
