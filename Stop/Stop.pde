@@ -66,4 +66,55 @@ void setup()
   String mp3FileName = ".mp3";
   String hardedmphonk160048 = "hard-edm-phonk-160048";
   String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
-    
+  String phonkphenixphonkon180000 = "phonk-phenix-phonk-on-180000";
+  //
+  String directory = "../../../" + muiscPathway;
+  String file = directory + phonkphenixphonkon180000 + mp3FileName;
+  song[currentSong] = minim.loadFile( file );
+  file = directory + phonkphenixphonkon180000 + mp3FileName;
+  song[currentSong+=1] = minim.loadFile( file );
+  file = directory + waitingliminalspacesmusic218874 + mp3FileName;
+  song[currentSong+=1] = minim.loadFile( file );
+  file = directory + hardedmphonk160048 + mp3FileName;
+  //
+  currentSong = 0;
+  //
+  song[currentSong].play();
+  //
+  //DIVs
+  //rect()
+  //rect( X, Y, Width, Height );
+  //rect( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonHeight );
+} //End setup
+//
+void draw() {
+  //background(200); // GrayScale; 0-255
+  //
+  rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonHeight );
+  //
+  //if ( day ) {} else if ( dark ) {} else {}
+  //
+  //fill(); //Colour
+  //stroke(); //Colour
+  //
+  rect( stopX, stopY, stopWidth, stopHeight );
+  //noFill();
+  //noStroke();
+  //
+  //song[currentSong].isPlaying();
+  //
+} //End draw
+//
+void mousePressed() {
+  //if() {} else {}
+} //End mousePressed
+//
+void keyPressed() {
+  //if ( key==? || key==? ) ;
+} //End mousePressed
+//
+void keyPressed() {
+  //if ( key==? || key==? ) ;
+} //End keyPressed
+//
+// End Main Progran
