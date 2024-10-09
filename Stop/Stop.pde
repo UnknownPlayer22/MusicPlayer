@@ -17,8 +17,8 @@ float musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButto
 float stopX, stopY, stopWidth, stopHeight;
 float musicButtonX, musicButtonY, musicButtonWidth, musicButtonHeight;
 //
-color Black=#000000;
-color White=#FFFFFF;
+color Black=#000000, White=#FFFFFF;
+color stopButtonHoverOver;
 //
 void setup()
 {
@@ -39,52 +39,43 @@ void setup()
     float padding2 = padding1*1/2;
     musicButtonSquareX = musicButtonDIV_X + padding2 ;
     musicButtonSquareY = musicButtonDIV_Y;
-    println( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
-    println ( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
-    println ( padding1 );
   } else {//Portrait
-  // musicButtonHeight needs to be changed
-  musicButtonSquareWidth = musicButtonDIV_Width ;
-  musicButtonSquareHeight = musicButtonDIV_Width;
-  float padding1 = musicButtonDIV_Height - musicButtonDIV_Width;
-  float padding2 = padding1*1/2;
-  musicButtonSquareX = musicButtonDIV_X;
-  musicButtonSquareY = musicButtonDIV_Y + padding2;
-  println( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
-  println ( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
-  println ( padding1 );
+    //musicButtonHeight needs to be changed
+    musicButtonSquareWidth = musicButtonDIV_Width ;
+    musicButtonSquareHeight = musicButtonDIV_Width;
+    float padding1 = musicButtonDIV_Height - musicButtonDIV_Width;
+    float padding2 = padding1*1/2;
+    musicButtonSquareX = musicButtonDIV_X;
+    musicButtonSquareY = musicButtonDIV_Y + padding2;
   }
-  /* Music Button Square Formulae for IF satament above
+  //Music Button Square Formulae for IF satament above
   // use paper folding case study
-  float padding = 1.0/5.0;
-  float stopButtonSize = musicButtonSquareWidth*3/5;
   stopWidth = stopButtonSize;
   stopHeight = stopButtonSize;
   stopX = musicButtonSquareX + musicButtonSquareX*padding;
   stopY = musicButtonSquareY + musicButtonSquareY*padding;
-  */
   //
   minim = new Minim(this);
   //
   // Load Music
-  //String musicPathway = "music/";
-  //String mp3FileName = ".mp3";
-  //String hardedmphonk160048 = "hard-edm-phonk-160048";
-  //String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
-  //String phonkphenixphonkon180000 = "phonk-phenix-phonk-on-180000";
+  String musicPathway = "music/";
+  String mp3FileName = ".mp3";
+  String hardedmphonk160048 = "hard-edm-phonk-160048";
+  String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
+  String phonkphenixphonkon180000 = "phonk-phenix-phonk-on-180000";
   //
-  //String directory = "../../../" + musicPathway;
-  //String file = directory + phonkphenixphonkon180000 + mp3FileName;
-  //song[currentSong] = minim.loadFile( file );
-  //file = directory + phonkphenixphonkon180000 + mp3FileName;
-  //song[currentSong+=1] = minim.loadFile( file );
-  //file = directory + waitingliminalspacesmusic218874 + mp3FileName;
-  //song[currentSong+=1] = minim.loadFile( file );
-  //file = directory + hardedmphonk160048 + mp3FileName;
+  String directory = "../../../" + musicPathway;
+  String file = directory + phonkphenixphonkon180000 + mp3FileName;
+  song[currentSong] = minim.loadFile( file );
+  file = directory + phonkphenixphonkon180000 + mp3FileName;
+  song[currentSong+=1] = minim.loadFile( file );
+  file = directory + waitingliminalspacesmusic218874 + mp3FileName;
+  song[currentSong+=1] = minim.loadFile( file );
+  file = directory + hardedmphonk160048 + mp3FileName;
   //
-  //currentSong = 0;
+  currentSong = 0;
   //
-  //song[currentSong].play(0);
+  song[currentSong].play(0);
   //
   //DIVs
   //rect()
@@ -99,9 +90,11 @@ void draw() {
   //
   //if ( day ) {} else if ( dark ) {} else {}
   //
-  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY );
-  fill(Black); //Colour
-  fill(White); // Colour
+  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonHeight ) {
+    fill(Black); //Colour
+  } else {
+    fill(White); // Colour
+  }
   //stroke(); //Colour
   //
   rect( stopX, stopY, stopWidth, stopHeight );
