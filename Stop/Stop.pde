@@ -13,8 +13,12 @@ int currentSong = numberOfSongs - numberOfSongs;
 //
 int appWidth, appHeight;
 float musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height;
-float muiscButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight;
-float stopX, stopY, stopWidth, StopHeight;
+float musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight;
+float stopX, stopY, stopWidth, stopHeight;
+float musicButtonX, musicButtonY, musicButtonWidth, musicButtonHeight;
+//
+color Black=#000000;
+color White=#FFFFFF;
 //
 void setup()
 {
@@ -34,14 +38,14 @@ void setup()
     float padding1 = musicButtonDIV_Width - musicButtonDIV_Height;
     float padding2 = padding1*1/2;
     musicButtonSquareX = musicButtonDIV_X + padding2 ;
-    musicButtonSquareY = MusicButtonDIV_Y;
+    musicButtonSquareY = musicButtonDIV_Y;
     println( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
-    println ( musicButtonSqareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
+    println ( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
     println ( padding1 );
   } else {//Portrait
   // musicButtonHeight needs to be changed
-  musicButtonSqareWidth = musicButtonDIV_Width ;
-  musicButtonSquareHeight = musicButtonDIV_WIdth;
+  musicButtonSquareWidth = musicButtonDIV_Width ;
+  musicButtonSquareHeight = musicButtonDIV_Width;
   float padding1 = musicButtonDIV_Height - musicButtonDIV_Width;
   float padding2 = padding1*1/2;
   musicButtonSquareX = musicButtonDIV_X;
@@ -63,24 +67,24 @@ void setup()
   minim = new Minim(this);
   //
   // Load Music
-  String musicPathway = "music/";
-  String mp3FileName = ".mp3";
-  String hardedmphonk160048 = "hard-edm-phonk-160048";
-  String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
-  String phonkphenixphonkon180000 = "phonk-phenix-phonk-on-180000";
+  //String musicPathway = "music/";
+  //String mp3FileName = ".mp3";
+  //String hardedmphonk160048 = "hard-edm-phonk-160048";
+  //String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
+  //String phonkphenixphonkon180000 = "phonk-phenix-phonk-on-180000";
   //
-  String directory = "../../../" + muiscPathway;
-  String file = directory + phonkphenixphonkon180000 + mp3FileName;
-  song[currentSong] = minim.loadFile( file );
-  file = directory + phonkphenixphonkon180000 + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
-  file = directory + waitingliminalspacesmusic218874 + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
-  file = directory + hardedmphonk160048 + mp3FileName;
+  //String directory = "../../../" + musicPathway;
+  //String file = directory + phonkphenixphonkon180000 + mp3FileName;
+  //song[currentSong] = minim.loadFile( file );
+  //file = directory + phonkphenixphonkon180000 + mp3FileName;
+  //song[currentSong+=1] = minim.loadFile( file );
+  //file = directory + waitingliminalspacesmusic218874 + mp3FileName;
+  //song[currentSong+=1] = minim.loadFile( file );
+  //file = directory + hardedmphonk160048 + mp3FileName;
   //
-  currentSong = 0;
+  //currentSong = 0;
   //
-  song[currentSong].play();
+  //song[currentSong].play(0);
   //
   //DIVs
   //rect()
@@ -89,17 +93,19 @@ void setup()
 } //End setup
 //
 void draw() {
-  //background(200); // GrayScale; 0-255
+  background(0); // GrayScale; 0-255
   //
-  //rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonHeight );
+  rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonHeight );
   //
   //if ( day ) {} else if ( dark ) {} else {}
   //
-  //fill(); //Colour
+  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY );
+  fill(Black); //Colour
+  fill(White); // Colour
   //stroke(); //Colour
   //
   rect( stopX, stopY, stopWidth, stopHeight );
-  //noFill();
+  noFill();
   //noStroke();
   //
   //song[currentSong].isPlaying();
