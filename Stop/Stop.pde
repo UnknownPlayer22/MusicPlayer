@@ -68,7 +68,7 @@ void setup()
   String waitingliminalspacesmusic218874 = "waiting-liminal-spaces-music-218874";
   //
   //Add Reading into Array
-  String directory = "../../../" + musicPathway;
+  String directory = "../" + musicPathway;
   String file = directory + phonkphenixphonkon180000 + mp3FileName;
   song[currentSong] = minim.loadFile( file );
   file = directory + hardedmphonk160048 + mp3FileName;
@@ -78,7 +78,7 @@ void setup()
   //
   currentSong = 0;
   //
-  song[currentSong].play(1);
+  song[currentSong].play(0);
   //Use play(timestart) & loop(numberofloops)
   //purpose is 2d shapes
   //Introduce keypressed as keyboard shortcuts
@@ -105,5 +105,37 @@ void draw() {
   */
   //if ( day ) {} else if ( dark ) {} else {}
   //
-  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth ) ;
-}
+  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButttonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause(); //single tap
+    } else {
+      song[currentSong].rewind(); //double tap
+    }
+  }
+  //
+}//End mousePressed
+//
+void keyPressed() {
+  /* key Board short cuts ... learning what the music buttons could be
+  Note: CAP Lock with ||
+  if ( key==? || key==? ) ;
+  */
+  //if ( key=='p' || key=='p' ) song[currentsong].play(); //simple play no double tap possible
+  //
+  if ( key=='P' || key=='p' ) song[currentSong].loop(0);
+  /* note: double tap is automatic rewind, no pause
+  simble is two triangles 
+  this changes what the button might become after it is pressed
+  */
+  //if ( key=='S' || key=='s' ) song[currentSong.pause(); // simple stop no double taps
+  //
+  if ( key=='S' | key=='s' ) {
+    if ( song[currentSong].isPlaying() ) {
+    } else {
+      song[currentSong].rewind(); // double tap
+    }
+  }
+}//End keyPressed
+//
+// End Main Program
+  
