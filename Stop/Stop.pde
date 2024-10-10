@@ -105,15 +105,40 @@ void draw() {
   */
   //if ( day ) {} else if ( dark ) {} else {}
   //
-  if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButttonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
-    if ( song[currentSong].isPlaying() ) {
-      song[currentSong].pause(); //single tap
-    } else {
-      song[currentSong].rewind(); //double tap
-    }
+  //hoverover IF - used in all other buttons too
+  if (mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY &&  mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
+    stopButtonHoverOver = White;
+  } else {
+    stopButtonHoverOver = Black;
   }
+  fill(stopButtonHoverOver);
+  noStroke(); //Colour
   //
-}//End mousePressed
+  rect( stopX, stopY, stopWidth, stopHeight ); //(X, Y, Width, height, roundedEdge1, roundedEdge2, roundedEdge3, roundedEdge4, )
+  fill(255); //noFill
+  stroke(1); //Reset Default
+  //
+  //music Buttons Interactions: cascading IFS can Become AND StateMents
+  //Note Keypressed must have click on screen
+  //
+}//End Draw
+//
+void mousePressed() {
+  //Boolean for click
+  //if() {} else {}
+  //
+  /* STOP Button Mouse Press, after hoverover
+  must have hoverover to ensure mouse will activate, visual confirmation of algoritim
+  */
+ if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
+   if ( song[currentSong].isPlaying() ) {
+     song[currentSong].pause(); //single tap
+   } else {
+     song[currentSong].rewind(); //double tap
+   }
+ }
+ //
+} //End mousePressed
 //
 void keyPressed() {
   /* key Board short cuts ... learning what the music buttons could be
