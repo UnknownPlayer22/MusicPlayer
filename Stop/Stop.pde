@@ -17,8 +17,14 @@ float musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_H
 float musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight;
 float stopX, stopY, stopWidth, stopHeight;
 //
-color White=#FFFFFF, Black=#000000;
+color White=#FFFFFF, Black=#000000, Red=#E00B0B, DarkPurple=#3C0BE0, cyan=#0BDEDC, lightgreen=#0BE03B, LightPink=#F505E9;
+color dayForeground=Red, dayHoverover=cyan, dayBackground=White;
+color darkForeground=Red, darkHoverover=DarkPurple, darkBackground=Red;
+color nightForeground=cyan, nightHoverover=lightgreen, nightBackground=Red;
+color appColorForeground, appColorHoverover, appColorBackground;
 color stopButtonHoverOver;
+//
+Boolean colorDarkMode=true; //Prefernce: true or false
 //
 void setup()
 {
@@ -88,6 +94,24 @@ void setup()
   //rect() based on variables; variables with program (introduces parameters of a function and TABS)
   //rect( X, Y, Width, Height );
   // rect( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
+  //
+  if ( hour()<=7 || hour()>=17 ) {
+    //Night Mode
+    appColorForeground = nightForeground;
+    appColorHoverover = nightHoverover;
+    appColorBackground = nightBackground;
+  } else if ( colorDarkMode==false && hour()>7 || hour()<17 ) {
+    //day mode  dayForeground=Red, dayHoverover=cyan, dayBackground=white;
+    appColorForeground = dayForeground;
+    appColorHoverover = dayHoverover; 
+    appColorBackground = dayBackground;
+  } else {
+    //Dark Mode darkForeground=Red, darkHoverover=DarkPurple, darkBackground=Black;
+    appColorForeground = darkForeground;
+    appColorHoverover = darkHoverover;
+    appColorBackground = darkBackground;    
+  }
+  //
 } //End setup
 //
 void draw() {
@@ -96,9 +120,9 @@ void draw() {
   rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
   //
   /* Note: 3 types of colour, in pairs for however
-  - Day: TBA-ForeGround | TBA-backround (hoverover)
-  - Dark: TBA-foreground | TBA-backround (hoverover)
-  - Night, no blue: TBA-foreground | TBA-backround (hoverover)
+  - Day, ForeGround: #000000  | Backround: #FFFFFF (hoverover) | Backround: #E00B0B
+  - Dark, Foreground: #000000 | Backround: #0BE03B (hoverover) | Backround: #3C0BE0
+  - Night, no blue, ForeGround: #F505E9 | HoverOver: #0BE03B   | Backround: #0BDEDC
   - Dark mode is for all the time, how bright the screen is and the eye strain
   - API: when mode is for all the time or just
   - Note: preferences are hardCoded here but can be choices in CS20
