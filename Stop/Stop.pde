@@ -18,13 +18,14 @@ float musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButto
 float stopX, stopY, stopWidth, stopHeight;
 float playButton1X, playButton1Y, playButton2X, playButton2Y, playButton3X, playButton3Y;
 float quitThicknessLine, quitButtonX1, quitButtonY1, quitButtonX2, quitButtonY2;
+float quitButtonX3, quitButtonY3, quitButtonX4, quitButtonY4;
 //
 color Purple=#5C00FF, Yellow=#FEFF00, Cyan=#00FFFD, White=#FFFFFF, Black=#000000, Green=#00FF00;
 color dayForeground=Purple, dayHoverover=Cyan, dayBackground=White;
 color darkForeground=Purple, darkHoverover=Green, darkBackground=Black;
 color nightForeground=Cyan, nightHoverover=Yellow, nightBackground=Black;
 color appColorForeground, appColorHoverover, appColorBackground;
-color stopButtonHoverOver;
+color stopButtonHoverOver, quitButtonLineColour;
 //
 Boolean colorDarkMode=true; //Preference: true or false //Future: Build Button for Dark Mode Preference
 //
@@ -75,7 +76,10 @@ void setup()
   quitButtonY1 = stopY;
   quitButtonX2 = stopX+stopWidth;
   quitButtonY2 = stopY+stopHeight;
-  //playButton1X, playButton1Y, playButton2X, playButton2Y, playButton3X, playButton3Y
+  quitButtonX3 =  quitButtonX2;
+  quitButtonY3 =  quitButtonY1;
+  quitButtonX4 =  quitButtonX1;
+  quitButtonY4 =  quitButtonY2;
   //
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder
   //
@@ -152,8 +156,10 @@ void draw() {
   //Hoverover IF - Used in all other buttons too
   if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
     stopButtonHoverOver = appColorHoverover; // See SetUp: Single Line IFs for Day, Dark, and Night Booleans
+    quitButtonLineColour = appColorHoverover;
   } else {
     stopButtonHoverOver = appColorForeground; // See SetUp: Single Line IFs for Day, Dark, and Night Booleans
+    quitButtonLineColour = appColorForeground;
   }
   fill(stopButtonHoverOver);
   noStroke(); //Colour
@@ -161,16 +167,18 @@ void draw() {
   //
   fill(stopButtonHoverOver);
   noStroke(); //colour
-  rect( stopX, stopY, stopWidth, stopHeight );
+  //rect( stopX, stopY, stopWidth, stopHeight );
   //triangle(playButton1X, playButton1Y, playButton2X, playButton2Y, playButton3X, playButton3Y);
   fill(255); //noFill(); //White in Gray Scale
   stroke(1); //Reset default
   //
   //
+  stroke(quitButtonLineColour);
   strokeWeight(quitThicknessLine);
   line( quitButtonX1, quitButtonY1, quitButtonX2, quitButtonY2 );
-  //line( quitButtonX3, quitButtonY3, quitButtonX4, quitButtonY4 );
-  fill(255); //noFill(); //White in Gray Scale
+  line( quitButtonX3, quitButtonY3, quitButtonX4, quitButtonY4 );
+  fill(255);//noFill();//White in Gray Scale
+  stroke(1); //Reset Default
   //noStroke(1); //reset default
   //
   //Music Buttons Interactions: cascading IFs can become AND Statements
