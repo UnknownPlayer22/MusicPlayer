@@ -225,6 +225,18 @@ void keyPressed() {
       song[currentSong].rewind(); //double tap
     }
   }
+  if ( key=='L' || key=='l' ) song[currentSong].loop(1);  // Loop Once
+  if ( key=='K' || key=='k' ) ; // Loop Infinitely
+  if ( key=='F' || key=='f' ) ; // Fast Forward
+  if ( key=='R' || key=='r' ) ; // Fast Reverse
+  if ( key=='M' || key=='m' ) ; // MUTE
+  if ( key=='O' || key=='o' ) ; // Pause 
+  if ( key==CODED || keyCode=='ESC' ) ; // QUIT
+  if ( key=='' || key=='' ) ; //
+  if ( key=='' || key=='' ) ; // NEXT
+  if ( key=='' || key=='' ) ; // PREVIOUS
+  if ( key=='' || key=='' ) ; // SHUFFLE
+  if ( key=='' || key=='' ) ; // Play-Pause-Stop
 } //End keyPressed
 //
 // End Main Program
