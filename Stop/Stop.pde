@@ -7,7 +7,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 Minim minim;
-int numberOfSongs = 8; //Able to Autodetect based on Pathway
+int numberOfSongs = 3; //Able to Autodetect based on Pathway
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
 int currentSong = numberOfSongs - numberOfSongs;  //beginning current song as ZERO
 //
@@ -94,13 +94,14 @@ void setup()
   //Add Reading into Array
   String directory = "../../" + musicPathway;
   String file = directory + hardedmphonk160048 + mp3FileName;
+  file = directory + hardedmphonk160048 + mp3FileName;
   song[currentSong] = minim.loadFile( file );
   file = directory + phonkphenixphonkon180000 + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
   file = directory + waitingliminalspacesmusic218874 + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
   //
-  currentSong = 0;
+  currentSong = 1;
   //
   //song[currentSong].play();
   //Use play(timeStart) & loop(numberOfLoops)
@@ -194,7 +195,7 @@ void mousePressed() {
    Must have Hoverover to ensure mouse will activate, visual confirmation of algorithm
    */
   if ( mouseX>musicButtonSquareX && mouseX<musicButtonSquareX+musicButtonSquareWidth && mouseY>musicButtonSquareY && mouseY<musicButtonSquareY+musicButtonSquareHeight ) {
-    song[currentSong].loop(0); //Simple Play, double tap possible
+    song[currentSong].loop(); //Simple Play, double tap possible
       if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause(); //single tap
     } else {
@@ -211,7 +212,7 @@ void keyPressed() {
    */
   //if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
   //
-  if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
+  if ( key=='P' || key=='p' ) song[currentSong].loop(); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
    This changes what the button might become after it is pressed
@@ -225,18 +226,32 @@ void keyPressed() {
       song[currentSong].rewind(); //double tap
     }
   }
-  if ( key=='L' || key=='l' ) song[currentSong].loop(1);  // Loop Once
-  if ( key=='K' || key=='k' ) ; // Loop Infinitely
-  if ( key=='F' || key=='f' ) ; // Fast Forward
-  if ( key=='R' || key=='r' ) ; // Fast Reverse
-  if ( key=='M' || key=='m' ) ; // MUTE
-  if ( key=='O' || key=='o' ) ; // Pause 
-  if ( key==CODED || keyCode=='ESC' ) ; // QUIT
-  if ( key=='' || key=='' ) ; //
-  if ( key=='' || key=='' ) ; // NEXT
-  if ( key=='' || key=='' ) ; // PREVIOUS
-  if ( key=='' || key=='' ) ; // SHUFFLE
-  if ( key=='' || key=='' ) ; // Play-Pause-Stop
+  if ( key=='L' || key=='l' ) song[currentSong].loop(1);  // Loop Once, then plays again, then stops & rewinds
+  if ( key=='K' || key=='k' ) song[currentSong].loop(); // Loop Infinitely
+  if ( key=='F' || key=='f' ) song[currentSong].skip( 1000 ); // Fast Forward , rewind, & play again
+  if ( key=='R' || key=='r' ) song[currentSong].skip( -1000 ); // Fast Reverse
+  if ( key=='M' || key=='m' ) { // MUTE
+    //
+    if ( song[currentSong].isMuted() ) {
+      song[currentSong].unmute();
+    } else {
+      song[currentSong].mute();
+    }
+  }
+  if ( key=='O' || key=='o' ) {
+    //
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else {
+      song[currentSong].play();
+    }
+  }
+  //if ( key==CODED || keyCode=='ESC' ) ; // QUIT
+  //if ( key=='' || key=='' ) ; //
+  //if ( key=='' || key=='' ) ; // NEXT
+  //if ( key=='' || key=='' ) ; // PREVIOUS
+  //if ( key=='' || key=='' ) ; // SHUFFLE
+  //if ( key=='' || key=='' ) ; // Play-Pause-Stop
 } //End keyPressed
 //
 // End Main Program
