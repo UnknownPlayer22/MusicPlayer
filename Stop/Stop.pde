@@ -180,7 +180,7 @@ void keyPressed() {
    if ( key==? || key==? ) ;
    */
   if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
-  //
+  q//
   //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
@@ -225,7 +225,7 @@ void keyPressed() {
   if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
   if ( key=='Q' || key=='q' ) exit(); // QUIT
   //
-  //hif ( key=='' || key=='' ) ;  NEXT //See .txt for starter hint
+  //if ( key=='' || key=='' ) ; // NEXT //See .txt for starter hint
   //if ( key=='' || key=='' ) ; // Previous //Students to finish
   //
   //if ( key=='' || key=='' ) ; // Shuffle - PLAY (Random)
