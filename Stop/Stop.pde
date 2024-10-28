@@ -180,7 +180,7 @@ void keyPressed() {
    if ( key==? || key==? ) ;
    */
   if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
-  q//
+  //
   //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
@@ -225,11 +225,41 @@ void keyPressed() {
   if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
   if ( key=='Q' || key=='q' ) exit(); // QUIT
   //
-  //if ( key=='' || key=='' ) ; // NEXT //See .txt for starter hint
-  //if ( key=='' || key=='' ) ; // Previous //Students to finish
+  if ( key=='N' || key=='n' ) { // NEXT //See .txt for starter hint
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      //
+      if ( currentSong==numberOfSongs-1 ) {
+        currentSong = 0;
+      } else {
+        currentSong++;
+      }
+      song[currentSong].play();
+    } else {
+      //
+      song[currentSong].rewind();
+      //
+      if ( currentSong==numberOfSongs-1 ) {
+        currentSong = 0;
+      } else {
+        currentSong++;
+      }
+      // NEXT will not automatically play the song
+      //song[currentSong].play();
+    }
+  }
+  //if ( key=='P' || key=='p' ) ; // Previous //Students to finish
   //
-  //if ( key=='' || key=='' ) ; // Shuffle - PLAY (Random)
-  //if ( key=='' || key=='' ) ; // Play-Pause-STOP
+  //if ( key=='S' || key=='s' ) ; // Shuffle - PLAY (Random)
+  //Note: will randomize the currentSong number
+  //Caution: random() is used very often
+  //Question: how does truncating decimals affect returning random() floats
+  /*
+  if ( key=='' || key=='' ) ; // Play-Pause-STOP //Advanced, beyond single buttons
+   - need to have basic GUI complete first
+   */
+  //
 } //End keyPressed
 //
 // End Main Program
