@@ -37,8 +37,13 @@ void setup() {
   - In the image, decide if calculating the larger side or the smaller side
   */
   if ( PitbullFightWidth > PitbullFightHeight ) { //DIV Landscape, find larger side
-    //
-  } else { //DIV Portrait
+  picPitbullFightHeightChanged = PitbullFightHeight;
+  picPitbullFightHeightChanged = ( picPitbullFightWidth > picPitbullFightHeight ) ? picPitbullFightWidthChanged / ratio : picPitbullFightWidthChanged * ratio;
+  println( "Inside If-true:", picPitbullFightWidthChanged );
+  } else { //DIV Landscape, find Larger side
+    picPitbullFightWidthChanged = PitbullFightWidth;
+    picPitbullFightHeightChanged = ( picPitbullFightWidth > picPitbullFightHeight ) ? picPitbullFightWidthChanged / ratio : picPitbullFightWidthChanged * ratio;
+    println( "Inside If-false:", picPitbullFightWidthChanged ) ;
     //
   }
   println( "Changed Width:", picPitbullFightWidthChanged, "\tChanged Height:", picPitbullFightHeightChanged );
@@ -52,6 +57,7 @@ void draw() {
   //Draw Image One Time, for testing
   //image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
   image( picPitbullFight, PitbullFightX, PitbullFightY, picPitbullFightWidthChanged, picPitbullFightHeightChanged  );
+  image( PicPitbullFight, PitbullFightX_Changed, 
 }
 //
 void mousePressed() {
