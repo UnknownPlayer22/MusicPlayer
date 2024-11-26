@@ -8,10 +8,10 @@ float titleX, titleY, titleWidth, titleHeight;
 float superCoolPhraseX, superCoolPhraseY, superCoolPhraseWidth, superCoolPhraseHeight;
 float footerX, footerY, footerWidth, footerHeight;
 PFont titleFont, footerFont, phraseFont;
-color ink, purple=#2C08FF, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
+color ink, purple=#2C08FF, white=#FFFFFF, resetDefaultInk=white, red=#E52727, cyan=#E52727, green=#27E57E; //Not Night Mode Friendly
 int size;
 String title = "How do I write text?", footer="This is at the bottom.", phrase="ORA-Wahoo";
-Boolean randomColour=false;
+Boolean randomColour=false, colorChange=false;
 //
 void setup()
 {
@@ -35,7 +35,7 @@ void setup()
    - Able to use decimals to dial in the values
    */
   titleX = appWidth*1/12;
-  titleY = appHeight*1/12;
+  titleY = appHeight*3/12;
   titleWidth = appWidth*8/10;
   titleHeight = appHeight*1/10;
   superCoolPhraseX = titleX; //Best Practice: change on formula
@@ -43,7 +43,7 @@ void setup()
   superCoolPhraseWidth = titleWidth; //Best Practice
   superCoolPhraseHeight = titleHeight; //Best Practice
   footerX = titleX; //Best Practice
-  footerY = appHeight*8/10;
+  footerY = appHeight*7.5/10;
   footerWidth = titleWidth; //Best Practice
   footerHeight = titleHeight; //Best Practice
   //DIVs
@@ -64,11 +64,12 @@ void draw()
   text( title, titleX, titleY, titleWidth, titleHeight );
   ink = purple;
   fill(ink);
-  size = 39; //Change the number until it fits
+  size = 86; //Change the number until it fits
   textFont( footerFont, size );
   text( footer, footerX, footerY, footerWidth, footerHeight );
   //
   ink = ( randomColour == true ) ? color( random(0, 256), random(256), random(256) ) : purple ; //Ternary Operator
+  ink = ( colorChange == true ) ? color( red=#E52727 ) : purple ;
   //
   fill(ink);
   size = 71; //Change the number until it fits
@@ -80,10 +81,20 @@ void mousePressed() {
 } //End mousePressed
 //
 void keyPressed() {
-  if ( randomColour == false ) {
-    randomColour = true;
-  } else {
-    randomColour = false;
+  //RBG Button. try to make a button for different color change
+  if ( key == 'R' || key == 'r' ) {
+    if ( colorChange == true ) {
+      colorChange =false;
+    } else {
+      colorChange = true;
+    }
+  }
+  if ( key == 'B' || key == 'b' ) {
+    if ( randomColour == false ) {
+      randomColour = false;
+    } else {
+      randomColour = true;
+    }
   }
 } //End keyPressed
 //
