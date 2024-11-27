@@ -13,6 +13,15 @@ float metaDataX1, metaDataY1, metaDataWidth1, metaDataHeight1;
 float metaDataX2, metaDataY2, metaDataWidth2, metaDataHeight2;
 float metaDataX3, metaDataY3, metaDataWidth3, metaDataHeight3;
 //
+Minim minim;
+int numberOfSongs = 3;
+AudioPlayer[] playList = new AudioPlayer[numberOfSongs];
+AudioMetaData[] playListTitleMetaData = new AudioMetaData[numberOfSongs];
+AudioMetaData[] playListPostionMetaData = new AudioMetaData[numberOfSongs];
+AudioMetaData[] playListTimeRemainingMetaData = new AudioMetaData[numberOfSongs];
+AudioMetaData[] playListTotalTimeMetaData = new AudioMetaData[numberOfSongs];
+int currentSong = numberOfSongs - numberOfSongs;
+//
 void setup() 
 {
   fullScreen();
@@ -23,13 +32,13 @@ void setup()
   metaDataY1 = appHeight*4/10;
   metaDataWidth1 = appWidth*8/10;
   metaDataHeight1 = appHeight*1/10;
-  metaDataX2 = appWidth*1/12;
+  metaDataX2 = appWidth*1/10;
   metaDataY2 = appHeight*3/10;
-  metaDataWidth2 = appWidth*2/10;
+  metaDataWidth2 = appWidth*3/10;
   metaDataHeight2 = appHeight*1/10;
-  metaDataX3 = appWidth*6/10;
-  metaDataY3 = appHeight*1/10;
-  metaDataWidth3 = appWidth*5/10;
+  metaDataX3 = appWidth*5/10;
+  metaDataY3 = appHeight*5/10;
+  metaDataWidth3 = appWidth*4/10;
   metaDataHeight3 = appHeight*1/10;
   //DIV
   rect( metaDataX1, metaDataY1, metaDataWidth1, metaDataHeight1 );
